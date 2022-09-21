@@ -1,4 +1,8 @@
-html,
+.bg-secondary{
+  background-color: aqua !important;
+}
+/* --bs-secondary-rgb: 12,212,12 */
+/* html,
 body {
   padding: 0;
   margin: 0;
@@ -23,4 +27,4 @@ a {
     color: white;
     background: black;
   }
-}
+} */
