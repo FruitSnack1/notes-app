@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Card } from './Card'
 
-export const Login = () => {
+export const Register = () => {
   return (
     <div className='col-3 mt-5'>
       <Card>
