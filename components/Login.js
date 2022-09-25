@@ -1,8 +1,25 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Card } from './Card'
+import axios from 'axios'
+import { AuthContext } from '../src/context/authContext'
+import { useRouter } from 'next/router'
 
 export const Login = () => {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const authContext = useContext(AuthContext)
+  const router = useRouter()
+
+  const submit = async () => {
+    const res = await axios.post('http://localhost:3001/login', {
+      username,
+      password,
+    })
+    const { token } = res.data
+    authContext.setAuthState(token)
+    router.push('/home')
+  }
   return (
     <div className='col-3 mt-5'>
       <Card>
@@ -16,6 +33,9 @@ export const Login = () => {
               id='form2Example1'
               className='form-control'
               placeholder='Username'
+              onChange={(e) => {
+                setUsername(e.target.value)
+              }}
             />
           </div>
 
@@ -28,6 +48,9 @@ export const Login = () => {
               id='form2Example2'
               className='form-control'
               placeholder='Password'
+              onChange={(e) => {
+                setPassword(e.target.value)
+              }}
             />
           </div>
 
@@ -35,6 +58,10 @@ export const Login = () => {
             <button
               type='button'
               className='btn btn-primary  mb-4 fw-bold text-white'
+              onClick={(e) => {
+                e.preventDefault()
+                submit()
+              }}
             >
               Sign in
             </button>
