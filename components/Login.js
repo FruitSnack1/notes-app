@@ -2,13 +2,12 @@ import Link from 'next/link'
 import React, { useContext, useState } from 'react'
 import { Card } from './Card'
 import axios from 'axios'
-import { AuthContext } from '../src/context/authContext'
 import { useRouter } from 'next/router'
+import { authenticateUser } from '../auth/auth'
 
 export const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const authContext = useContext(AuthContext)
   const router = useRouter()
 
   const submit = async () => {
@@ -17,9 +16,10 @@ export const Login = () => {
       password,
     })
     const { token } = res.data
-    authContext.setAuthState(token)
+    authenticateUser(token)
     router.push('/home')
   }
+
   return (
     <div className='col-3 mt-5'>
       <Card>

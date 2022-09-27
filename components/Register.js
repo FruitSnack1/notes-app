@@ -1,8 +1,27 @@
+import axios from 'axios'
 import Link from 'next/link'
-import React from 'react'
+import { Router, useRouter } from 'next/router'
+import React, { useState } from 'react'
 import { Card } from './Card'
 
 export const Register = () => {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordAgain, setPasswordAgain] = useState('')
+
+  const router = useRouter()
+
+  const submit = async (e) => {
+    e.preventDefault()
+    if (password != passwordAgain) return
+    await axios.post('http://localhost:3001/register', {
+      username,
+      password,
+      passwordAgain,
+    })
+    router.push('/login')
+  }
+
   return (
     <div className='col-3 mt-5'>
       <Card>
@@ -16,6 +35,9 @@ export const Register = () => {
               id='form2Example1'
               className='form-control'
               placeholder='Username'
+              onChange={(e) => {
+                setUsername(e.target.value)
+              }}
             />
           </div>
 
@@ -28,6 +50,24 @@ export const Register = () => {
               id='form2Example2'
               className='form-control'
               placeholder='Password'
+              onChange={(e) => {
+                setPassword(e.target.value)
+              }}
+            />
+          </div>
+
+          <div className='form-outline mb-4'>
+            <label className='form-label' htmlFor='form2Example2'>
+              Password again
+            </label>
+            <input
+              type='password'
+              id='form2Example2'
+              className='form-control'
+              placeholder='Password again'
+              onChange={(e) => {
+                setPasswordAgain(e.target.value)
+              }}
             />
           </div>
 
@@ -35,15 +75,16 @@ export const Register = () => {
             <button
               type='button'
               className='btn btn-primary  mb-4 fw-bold text-white'
+              onClick={submit}
             >
-              Sign in
+              Register
             </button>
           </div>
 
           <div className='text-center'>
-            <span className='me-1'>Not a member?</span>
-            <Link href={'/register'} className='ml-3'>
-              Register
+            <span className='me-1'>Already a member?</span>
+            <Link href={'/login'} className='ml-3'>
+              Log in
             </Link>
           </div>
         </form>
