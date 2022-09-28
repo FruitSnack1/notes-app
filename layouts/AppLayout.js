@@ -4,8 +4,8 @@ import { Navbar } from '../components/Navbar'
 export const AppLayout = ({ children }) => {
   return (
     <>
-      <div className='container-fluid'>
-        <div className='row'>
+      <div className='container-fluid v100'>
+        <div className='row h-100'>
           <Navbar />
 
           <main

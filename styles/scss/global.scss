@@ -1,15 +1,17 @@
 $theme-colors: (
   'primary': #4079fe,
-  'secondary': #f6f7fb,
+  'secondary': #f6f8fa,
   'success': #1ce1ac,
   'info': #ff7d50,
   'warning': #ffbe0b,
   'danger': #ff007f,
-  'light': #c0ccda,
+  'light': #ffffff,
   'dark': #001738,
 );
 body {
     font-family: 'Inter', sans-serif !important;
   }
-
+.v100{
+  height: calc(100vh - 40px)
+}
 @import '/node_modules/bootstrap/scss/bootstrap.scss';

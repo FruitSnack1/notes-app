@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Layout from '../layouts/Layout'
 import styles from '../styles/Home.module.css'
 
 export default function Index() {
@@ -26,4 +27,8 @@ export default function Index() {
       </main>
     </div>
   )
+}
+
+Index.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>
 }
