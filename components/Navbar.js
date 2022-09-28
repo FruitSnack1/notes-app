@@ -7,19 +7,19 @@ export const Navbar = () => {
       <div className='sidebar-sticky'>
         <ul className='nav flex-column'>
           <li className='nav-item'>
-            <a className='nav-link'>
-              <Link href={'/app'}>Home</Link>
-            </a>
+            <Link href={'/app'}>
+              <a className='nav-link'>Home</a>
+            </Link>
           </li>
           <li className='nav-item'>
-            <a className='nav-link'>
-              <Link href={'/app/settings'}>Settings</Link>
-            </a>
+            <Link href={'/app/settings'}>
+              <a className='nav-link'>Settings</a>
+            </Link>
           </li>
           <li className='nav-item'>
-            <a className='nav-link'>
-              <Link href={'/app/trash'}>Trash</Link>
-            </a>
+            <Link href={'/app/trash'}>
+              <a className='nav-link'>Trash</a>
+            </Link>
           </li>
         </ul>
       </div>

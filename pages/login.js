@@ -4,8 +4,10 @@ import Layout from '../layouts/Layout'
 
 export default function login() {
   return (
-    <div className='row justify-content-center'>
-      <Login />
+    <div className='container-fluid'>
+      <div className='row justify-content-center'>
+        <Login />
+      </div>
     </div>
   )
 }
