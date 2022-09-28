@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export const Navbar = () => {
@@ -6,16 +7,13 @@ export const Navbar = () => {
       <div className='sidebar-sticky'>
         <ul className='nav flex-column'>
           <li className='nav-item'>
-            <a className='nav-link active' href='#'>
-              <span data-feather='home'></span>
-              Dashboard <span className='sr-only'>(current)</span>
-            </a>
+            <Link href={'/app'}>Home</Link>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' href='#'>
-              <span data-feather='file'></span>
-              Orders
-            </a>
+            <Link href={'/app/settings'}>Settings</Link>
+          </li>
+          <li className='nav-item'>
+            <Link href={'/app/trash'}>Trash</Link>
           </li>
         </ul>
       </div>

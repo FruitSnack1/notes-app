@@ -17,7 +17,7 @@ export const Login = () => {
     })
     const { token } = res.data
     authenticateUser(token)
-    router.push('/home')
+    router.push('/app')
   }
 
   return (
