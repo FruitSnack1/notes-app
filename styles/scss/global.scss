@@ -9,9 +9,14 @@ $theme-colors: (
   'dark': #001738,
 );
 body {
-    font-family: 'Inter', sans-serif !important;
-  }
-.v100{
-  height: calc(100vh - 40px)
+  font-family: 'Inter', sans-serif !important;
+}
+.v100 {
+  height: calc(100vh - 40px);
+}
+
+.filler {
+  height: 70%;
+  border-radius: 0 0 var(--bs-border-radius-xl) var(--bs-border-radius-xl) !important;
 }
 @import '/node_modules/bootstrap/scss/bootstrap.scss';

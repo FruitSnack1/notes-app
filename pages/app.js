@@ -5,8 +5,11 @@ import HabitList from '../components/HabitList'
 export default function App() {
   return (
     <>
-      <h3>app </h3>
-      <HabitList />
+      <div className="row">
+        <div className="col-6">
+          <HabitList />
+        </div>
+      </div>
     </>
   )
 }
