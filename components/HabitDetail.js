@@ -32,7 +32,9 @@ export const HabitDetail = ({ id }) => {
           </div>
         </div>
         <Week />
-        <Calendar />
+        <div className='w-50'>
+          <Calendar />
+        </div>
       </Card>
     </>
   )

@@ -19,4 +19,17 @@ body {
   height: 70%;
   border-radius: 0 0 var(--bs-border-radius-xl) var(--bs-border-radius-xl) !important;
 }
+
+.calendar-day{
+  width: 11%
+}
+
+.mt-100{
+  margin-top: 100%
+}
+
+.calendar-gap{
+  width: 3.833333333333333%
+}
+
 @import '/node_modules/bootstrap/scss/bootstrap.scss';
