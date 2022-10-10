@@ -2,6 +2,8 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card } from './Card'
 import { faEdit, faEllipsis, faPen } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
+import { Week } from './Week'
 
 const Habit = ({ habit }) => {
   return (
@@ -9,20 +11,14 @@ const Habit = ({ habit }) => {
       <Card className={'rounded-4 mb-3'}>
         <div className='row'>
           <div className='col-6'>
-            <span className='mb-3 fw-bold h3'>{habit.title}</span>
+            <Link href={`/app/${habit._id}`}>
+              <span className='mb-3 fw-bold h3'>{habit.title}</span>
+            </Link>
             {/* <FontAwesomeIcon
               icon={faPen}
               className='text-black-50'
             ></FontAwesomeIcon> */}
-            <div className='d-flex justify-content-start align-items-center '>
-              <button className='btn btn-secondary me-2'>Mo</button>
-              <button className='btn btn-secondary me-2'>Tu</button>
-              <button className='btn btn-secondary me-2'>We</button>
-              <button className='btn btn-secondary me-2'>Th</button>
-              <button className='btn btn-secondary me-2'>Fr</button>
-              <button className='btn btn-primary text-white me-2'>Sa</button>
-              <button className='btn btn-primary text-white me-2'>Su</button>
-            </div>
+            <Week />
           </div>
           <div className='col-5'>
             {/* <button className="btn btn-success">Done</button> */}
