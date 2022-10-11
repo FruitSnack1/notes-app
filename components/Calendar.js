@@ -1,9 +1,10 @@
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
-import { CalendarWeek } from './CalendarWeek'
+import { CalendarDay } from './CalendarDay'
+import { EmptyCalendarDay } from './EmptyCalendarDay'
 
-export const Calendar = () => {
+export const Calendar = ({ habit }) => {
   const [month, setMonth] = useState(new Date().getMonth())
   const [year, setYear] = useState(new Date().getFullYear())
   const [offset, setOffset] = useState(0)
@@ -25,7 +26,6 @@ export const Calendar = () => {
   ]
 
   useEffect(() => {
-    console.log(new Date(year, month, 1).getDay())
     setOffset(getOffset())
     setLastDay(new Date(year, month + 1, 0).getDate())
   }, [month, year])
@@ -42,6 +42,11 @@ export const Calendar = () => {
     else setMonth((month + direction) % 12)
     if (month + direction == -1) setYear(year - 1)
     if (month + direction == 12) setYear(year + 1)
+  }
+
+  const getCurrentStatus = (date) => {
+    if (!habit) return 0
+    return habit.entries.find((e) => e.date == date.toISOString()).status
   }
 
   return (
@@ -64,15 +69,22 @@ export const Calendar = () => {
         <span>Su</span>
       </div>
       <div>
-        {new Array(6).fill(0).map((e, i) => (
-          <CalendarWeek
-            key={i}
-            startDay={7 * i + 1 - (i ? offset : 0)}
-            endDay={Math.min(7 * (i + 1) - offset, lastDay)}
-            month={month}
-            year={year}
-          />
-        ))}
+        {new Array(6 * 7)
+          .fill(0)
+          .map((e, i) =>
+            (i > offset) & (i <= lastDay + offset) ? (
+              <CalendarDay
+                key={i}
+                date={new Date(year, month, i - offset)}
+                last={(i + 1) % 7 == 0}
+                currentStatus={getCurrentStatus(
+                  new Date(year, month, i - offset)
+                )}
+              />
+            ) : (
+              <EmptyCalendarDay key={i} />
+            )
+          )}
       </div>
     </>
   )

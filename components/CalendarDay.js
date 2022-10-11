@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export const CalendarDay = ({ dayNumber, last, month, year }) => {
-  const [status, setStatus] = useState(0)
+export const CalendarDay = ({ last, date, currentStatus = 0 }) => {
+  const [status, setStatus] = useState(currentStatus)
 
   const changeStatus = async () => {
     setStatus((status + 1) % 3)
-    console.log(new Date(year, month, dayNumber))
+  }
+
+  useEffect(() => {
     fetch('http://localhost:3001/habits/entry/6343ca3681cb8d5b0ccf6976', {
       method: 'PUT',
       credentials: 'include',
@@ -13,11 +15,11 @@ export const CalendarDay = ({ dayNumber, last, month, year }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        date: new Date(year, month, dayNumber),
-        status: (status + 1) % 3,
+        date,
+        status,
       }),
     })
-  }
+  }, [status])
 
   return (
     <>
@@ -34,7 +36,7 @@ export const CalendarDay = ({ dayNumber, last, month, year }) => {
                 : 'btn-danger'
             }`}
           >
-            {dayNumber}
+            {date.getDate()}
           </button>
         </div>
       </div>

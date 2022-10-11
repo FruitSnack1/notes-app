@@ -7,7 +7,7 @@ import { Card } from './Card'
 import { Week } from './Week'
 
 export const HabitDetail = ({ id }) => {
-  const [habit, setHabit] = useState([])
+  const [habit, setHabit] = useState(false)
 
   const fetchHabit = async () => {
     const res = await fetch(`http://localhost:3001/habits/${id}`, {
@@ -18,6 +18,7 @@ export const HabitDetail = ({ id }) => {
   }
 
   useEffect(() => {
+    console.log('fetching habit')
     fetchHabit()
   }, [])
 
@@ -31,9 +32,12 @@ export const HabitDetail = ({ id }) => {
             <FontAwesomeIcon icon={faTrash} className='text-danger' />
           </div>
         </div>
-        <Week />
+        <p className='mb-3'>Started on {new Date(habit.created).toString()}</p>
         <div className='w-50'>
-          <Calendar />
+          <Week habit={habit} />
+        </div>
+        <div className='w-50'>
+          {habit ? <Calendar habit={habit} /> : <p>loading</p>}
         </div>
       </Card>
     </>

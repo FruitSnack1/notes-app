@@ -1,15 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Weekday } from './Weekday'
 
-export const Week = () => {
+export const Week = ({ habit }) => {
+  const [enabled, setEnabled] = useState(new Array(7).fill(false))
+  const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+
+  const changeState = (index) => {
+    console.log('changing state')
+    let newArray = enabled
+    newArray[index] = !newArray[index]
+    console.log(newArray)
+    setEnabled(newArray)
+  }
+
   return (
-    <div className='d-flex justify-content-start align-items-center '>
-      <button className='btn btn-secondary me-2'>Mo</button>
-      <button className='btn btn-secondary me-2'>Tu</button>
-      <button className='btn btn-secondary me-2'>We</button>
-      <button className='btn btn-secondary me-2'>Th</button>
-      <button className='btn btn-secondary me-2'>Fr</button>
-      <button className='btn btn-primary text-white me-2'>Sa</button>
-      <button className='btn btn-primary text-white me-2'>Su</button>
+    <div>
+      {enabled.map((e, i) => (
+        <Weekday
+          key={i}
+          last={i == days.length - 1}
+          day={days[i]}
+          index={i}
+          changeState={changeState}
+          state={e}
+        />
+      ))}
     </div>
   )
 }
