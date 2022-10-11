@@ -13,5 +13,5 @@ const isAuthenticated = (req) => {
 
 //protected routes
 export const config = {
-  matcher: ['/settings'],
+  matcher: '/app/:path*',
 }
