@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { Calendar } from './Calendar'
 import { Card } from './Card'
+import { Score } from './Score'
 import { Week } from './Week'
 
 export const HabitDetail = ({ id }) => {
@@ -32,12 +33,23 @@ export const HabitDetail = ({ id }) => {
             <FontAwesomeIcon icon={faTrash} className='text-danger' />
           </div>
         </div>
-        <p className='mb-3'>Started on {new Date(habit.created).toString()}</p>
+        <p className='mb-3'>
+          Started on {new Date(habit.created).getDay()}/
+          {new Date(habit.created).getMonth()}/
+          {new Date(habit.created).getFullYear()}
+        </p>
+        <h5 className='fw-bold'>Frequency</h5>
         <div className='w-50'>
-          <Week habit={habit} />
+          {habit ? <Week habit={habit} /> : <p>loading</p>}
         </div>
-        <div className='w-50'>
-          {habit ? <Calendar habit={habit} /> : <p>loading</p>}
+        <h5 className='fw-bold'>Calendar</h5>
+        <div className='row'>
+          <div className='col-6'>
+            {habit ? <Calendar habit={habit} /> : <p>loading</p>}
+          </div>
+          <div className='col-6'>
+            {habit ? <Score habit={habit} /> : <p>loading</p>}
+          </div>
         </div>
       </Card>
     </>

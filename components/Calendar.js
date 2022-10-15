@@ -46,7 +46,7 @@ export const Calendar = ({ habit }) => {
 
   const getCurrentStatus = (date) => {
     if (!habit) return 0
-    return habit.entries.find((e) => e.date == date.toISOString()).status
+    return habit.entries.find((e) => e.date == date.toISOString())?.status
   }
 
   return (
@@ -59,14 +59,20 @@ export const Calendar = ({ habit }) => {
         </div>
         <FontAwesomeIcon onClick={() => changeMonth(1)} icon={faAngleRight} />
       </div>
-      <div className='d-flex justify-content-between mb-3 px-3 '>
-        <span>Mo</span>
-        <span>Tu</span>
-        <span>We</span>
-        <span>Th</span>
-        <span>Fr</span>
-        <span>Sa</span>
-        <span>Su</span>
+      <div className='d-flex justify-content-between mb-3  '>
+        <span className='flex-fill text-center'>Mo</span>
+        <div className='calendar-gap'></div>
+        <span className='flex-fill text-center'>Tu</span>
+        <div className='calendar-gap'></div>
+        <span className='flex-fill text-center'>We</span>
+        <div className='calendar-gap'></div>
+        <span className='flex-fill text-center'>Th</span>
+        <div className='calendar-gap'></div>
+        <span className='flex-fill text-center'>Fr</span>
+        <div className='calendar-gap'></div>
+        <span className='flex-fill text-center'>Sa</span>
+        <div className='calendar-gap'></div>
+        <span className='flex-fill text-center'>Su</span>
       </div>
       <div>
         {new Array(6 * 7)
@@ -74,7 +80,7 @@ export const Calendar = ({ habit }) => {
           .map((e, i) =>
             (i > offset) & (i <= lastDay + offset) ? (
               <CalendarDay
-                key={i}
+                key={new Date(year, month, i - offset)}
                 date={new Date(year, month, i - offset)}
                 last={(i + 1) % 7 == 0}
                 currentStatus={getCurrentStatus(

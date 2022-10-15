@@ -1,7 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export const Weekday = ({ state, last, day, changeState, index }) => {
-  const [enabled, setEnabled] = useState(0)
+export const Weekday = ({ last, day, habit }) => {
+  const [enabled, setEnabled] = useState(
+    habit?.frequency[day.toLowerCase()]
+      ? habit.frequency[day.toLowerCase()]
+      : false
+  )
+
+  const updateEnabled = () => {
+    setEnabled(!enabled)
+    fetch(`http://localhost:3001/habits/${habit._id}`, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        frequency: {
+          [day.toLowerCase()]: !enabled,
+        },
+      }),
+    })
+  }
 
   return (
     <>
@@ -9,9 +29,7 @@ export const Weekday = ({ state, last, day, changeState, index }) => {
         <div className='mt-100'></div>
         <div className='position-absolute  top-0 bottom-0 start-0 end-0'>
           <button
-            onClick={() => {
-              setEnabled(!enabled)
-            }}
+            onClick={updateEnabled}
             className={`btn w-100 h-100 fw-bold ${
               enabled ? 'bg-primary' : 'bg-secondary'
             } ${enabled ? 'text-white' : 'text-dark'}`}

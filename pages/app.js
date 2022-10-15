@@ -7,7 +7,7 @@ export default function App() {
   return (
     <>
       <div className='row'>
-        <div className='col-6'>
+        <div className='col-12'>
           <HabitList />
           <NewHabit />
         </div>

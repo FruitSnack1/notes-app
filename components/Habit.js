@@ -1,7 +1,5 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card } from './Card'
-import { faEdit, faEllipsis, faPen } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import { Week } from './Week'
 
@@ -18,7 +16,7 @@ const Habit = ({ habit }) => {
               icon={faPen}
               className='text-black-50'
             ></FontAwesomeIcon> */}
-            <Week />
+            <Week habit={habit} />
           </div>
           <div className='col-5'>
             {/* <button className="btn btn-success">Done</button> */}

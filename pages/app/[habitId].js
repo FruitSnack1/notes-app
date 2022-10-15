@@ -7,11 +7,7 @@ import Layout from '../../layouts/Layout'
 const HabitDetails = () => {
   const router = useRouter()
   const habitId = router.query.habitId
-  return (
-    <div>
-      <HabitDetail id={habitId} />
-    </div>
-  )
+  return <div>{habitId ? <HabitDetail id={habitId} /> : <></>}</div>
 }
 HabitDetails.getLayout = function getLayout(page) {
   return (
