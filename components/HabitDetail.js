@@ -34,8 +34,8 @@ export const HabitDetail = ({ id }) => {
           </div>
         </div>
         <p className='mb-3'>
-          Started on {new Date(habit.created).getDay()}/
-          {new Date(habit.created).getMonth()}/
+          Started on {new Date(habit.created).getDate()}/
+          {new Date(habit.created).getMonth() + 1}/
           {new Date(habit.created).getFullYear()}
         </p>
         <h5 className='fw-bold'>Frequency</h5>
