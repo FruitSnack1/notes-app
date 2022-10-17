@@ -2,13 +2,13 @@ import { faCircle, faMap } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 
-export const CalendarDay = ({ last, date, currentStatus = 0 }) => {
+export const CalendarDay = ({ habit, last, date, currentStatus = 0 }) => {
   const [status, setStatus] = useState(currentStatus)
 
   const changeStatus = async () => {
     if (isInFuture()) return
     setStatus((status + 1) % 3)
-    fetch('http://localhost:3001/habits/entry/6343ca3681cb8d5b0ccf6976', {
+    fetch(`http://localhost:3001/habits/entry/${habit._id}`, {
       method: 'PUT',
       credentials: 'include',
       headers: {

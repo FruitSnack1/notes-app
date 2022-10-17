@@ -9,7 +9,8 @@ export const Weekday = ({ last, day, habit }) => {
 
   const updateEnabled = () => {
     setEnabled(!enabled)
-    fetch(`http://localhost:3001/habits/${habit._id}`, {
+    // fetch(`http://localhost:3001/habits/${habit._id}`, {
+    fetch(`http://localhost:3001/habits/frequency/${habit._id}`, {
       method: 'PUT',
       credentials: 'include',
       headers: {

@@ -33,7 +33,7 @@ export const Calendar = ({ habit }) => {
   const getOffset = () => {
     return (
       new Date(year, month, 1).getDay() -
-      (new Date(year, month, 1).getDay() == 0 ? -6 : 1)
+      (new Date(year, month, 1).getDay() == 0 ? -5 : 2)
     )
   }
 
@@ -74,12 +74,14 @@ export const Calendar = ({ habit }) => {
         <div className='calendar-gap'></div>
         <span className='flex-fill text-center'>Su</span>
       </div>
+      <div>{offset}</div>
       <div>
         {new Array(6 * 7)
           .fill(0)
           .map((e, i) =>
             (i > offset) & (i <= lastDay + offset) ? (
               <CalendarDay
+                habit={habit}
                 key={new Date(year, month, i - offset)}
                 date={new Date(year, month, i - offset)}
                 last={(i + 1) % 7 == 0}
