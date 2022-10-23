@@ -1,25 +1,19 @@
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { getHabits } from '../api/habit.api'
 import Habit from './Habit'
 
 const HabitList = () => {
-  const [habits, setHabits] = useState([])
+  const { isLoading, error, data } = useQuery(['habits'], getHabits)
 
-  useEffect(() => {
-    fetchHabits()
-  }, [])
+  if (isLoading) return <p>Loading</p>
 
-  const fetchHabits = async () => {
-    const res = await fetch('http://localhost:3001/habits', {
-      credentials: 'include',
-    })
-    const data = await res.json()
-    if (res.status != 200) return
-    setHabits(data)
-  }
+  if (error) return <p>{error.message}</p>
 
   return (
     <div>
-      {habits.map((habit, index) => (
+      {data.data.map((habit, index) => (
         <Habit key={index} habit={habit}></Habit>
       ))}
     </div>

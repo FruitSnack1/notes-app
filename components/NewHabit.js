@@ -1,19 +1,18 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
+import { postHabit } from '../api/habit.api'
 
 export const NewHabit = () => {
   const [title, setTitle] = useState('')
 
-  const createHabit = async (e) => {
-    e.preventDefault()
-    const res = await fetch('http://localhost:3001/habits', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ title }),
-    })
-  }
+  const queryClient = useQueryClient()
+
+  const mutation = useMutation(() => postHabit({ title }), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['habits'])
+      setTitle('')
+    },
+  })
 
   return (
     <>
@@ -27,13 +26,17 @@ export const NewHabit = () => {
             id='exampleInputEmail1'
             aria-describedby='emailHelp'
             onChange={(e) => setTitle(e.target.value)}
+            value={title}
           />
         </div>
 
         <button
           type='submit'
           className='btn btn-primary text-white'
-          onClick={createHabit}
+          onClick={(e) => {
+            e.preventDefault()
+            mutation.mutate()
+          }}
         >
           Create habit
         </button>
