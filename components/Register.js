@@ -23,11 +23,12 @@ export const Register = () => {
   }
 
   return (
-    <div className='col-3 mt-5'>
+    <div className='col-3 '>
       <Card>
+        <h3 className='fw-bold'>Sign up for free</h3>
         <form>
           <div className='form-outline mb-4'>
-            <label className='form-label' htmlFor='form2Example1'>
+            <label className='form-label fw-semibold' htmlFor='form2Example1'>
               Username
             </label>
             <input
@@ -42,7 +43,7 @@ export const Register = () => {
           </div>
 
           <div className='form-outline mb-4'>
-            <label className='form-label' htmlFor='form2Example2'>
+            <label className='form-label fw-semibold' htmlFor='form2Example2'>
               Password
             </label>
             <input
@@ -57,7 +58,7 @@ export const Register = () => {
           </div>
 
           <div className='form-outline mb-4'>
-            <label className='form-label' htmlFor='form2Example2'>
+            <label className='form-label fw-semibold' htmlFor='form2Example2'>
               Password again
             </label>
             <input

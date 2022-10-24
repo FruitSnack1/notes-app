@@ -4,9 +4,11 @@ import Layout from '../layouts/Layout'
 
 export default function register() {
   return (
-    <div className='container-fluid'>
-      <div className='row justify-content-center'>
-        <Register />
+    <div className='hero d-flex justify-content-center align-items-center'>
+      <div className='container-fluid'>
+        <div className='row justify-content-center'>
+          <Register />
+        </div>
       </div>
     </div>
   )

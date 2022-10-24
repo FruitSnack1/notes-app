@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { isAuthenticated, unauthenticateUser } from '../auth/auth'
+import { Footer } from '../components/Footer'
 
 export default function Layout({ children }) {
   const router = useRouter()
@@ -12,28 +13,34 @@ export default function Layout({ children }) {
     router.push('/login')
   }
   return (
-    <div>
-      <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <Link href={'/'}>
-          <a className="navbar-brand col-sm-3 col-md-2 mr-0">Good Habits</a>
-        </Link>
+    <>
+      <div>
+        <nav
+          className='navbar sticky-top flex-md-nowrap p-3 shadow-sm'
+          style={{ height: '70px' }}
+        >
+          <div className='container'>
+            <Link href={'/'}>
+              <h3 className='fw-bold m-0'>Good Habits</h3>
+            </Link>
 
-        <ul className="navbar-nav px-3">
-          <li className="nav-item text-nowrap">
-            {/* {isAuthenticated() ? (
-              <a onClick={logOut} className="nav-link">
-                Sign out
-              </a>
-            ) : (
-              <button onClick={logIn} className="btn btn-light">
-                Login
-              </button>
-            )} */}
-          </li>
-        </ul>
-      </nav>
-
+            <ul className='navbar-nav px-3'>
+              <li className='nav-item '>
+                <Link href='/login'>
+                  <button className='btn fw-bold me-3'>Login</button>
+                </Link>
+                <Link href='/register'>
+                  <button className='btn btn-primary text-white fw-bold'>
+                    Sign up
+                  </button>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
       {children}
-    </div>
+      <Footer />
+    </>
   )
 }

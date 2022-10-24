@@ -9,15 +9,24 @@ $theme-colors: (
   'dark': #001738,
 );
 body {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
 }
 .v100 {
-  height: calc(100vh - 40px);
+  height: calc(100vh - 70px - 66px);
 }
 
 .filler {
   height: 70%;
   border-radius: 0 0 var(--bs-border-radius-xl) var(--bs-border-radius-xl) !important;
+}
+
+.hero{
+  background-image: url('../../public/hero-background.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+  min-height: calc(100vh - 70px - 66px);
 }
 
 .calendar-day{
