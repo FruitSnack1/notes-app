@@ -2,6 +2,7 @@ import React from 'react'
 import { Card } from './Card'
 import Link from 'next/link'
 import { Week } from './Week'
+import { Score } from './Score'
 
 const Habit = ({ habit }) => {
   return (
@@ -10,25 +11,14 @@ const Habit = ({ habit }) => {
         <div className='row'>
           <div className='col-6'>
             <Link href={`/app/${habit._id}`}>
-              <span className='mb-3 fw-bold h3'>{habit.title}</span>
+              <h3 className='mb-3 fw-bold h3'>{habit.title}</h3>
             </Link>
-            {/* <FontAwesomeIcon
-              icon={faPen}
-              className='text-black-50'
-            ></FontAwesomeIcon> */}
+
             <Week habit={habit} />
           </div>
-          <div className='col-5'>
-            {/* <button className="btn btn-success">Done</button> */}
-            <div className='h-100 d-flex align-items-end justify-content-end '>
-              <div className='h-100 w-25 filler bg-secondary position-relative rounded-4 '>
-                <div className='w-100 filler bg-success position-absolute bottom-0 '></div>
-              </div>
-            </div>
+          <div className='col-6 d-flex justify-content-end'>
+            <Score habit={habit} />
           </div>
-          {/* <div className='col-1 d-flex justify-content-center align-items-center'>
-            <FontAwesomeIcon icon={faEllipsis} />
-          </div> */}
         </div>
       </Card>
     </>

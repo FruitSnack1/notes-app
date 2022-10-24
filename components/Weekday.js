@@ -28,7 +28,7 @@ export const Weekday = ({ last, day, habit }) => {
 
   return (
     <>
-      <div className='d-inline-block position-relative calendar-day'>
+      <div className='d-inline-block position-relative calendar-day mb-0'>
         <div className='mt-100'></div>
         <div className='position-absolute  top-0 bottom-0 start-0 end-0'>
           <button
