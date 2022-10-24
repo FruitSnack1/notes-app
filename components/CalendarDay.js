@@ -1,25 +1,25 @@
-import { faCircle, faMap } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState } from 'react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import React, { useState } from 'react'
+import { updateEntry } from '../api/habit.api'
 
 export const CalendarDay = ({ habit, last, date, currentStatus = 0 }) => {
   const [status, setStatus] = useState(currentStatus)
 
-  const changeStatus = async () => {
-    if (isInFuture()) return
-    setStatus((status + 1) % 3)
-    fetch(`http://localhost:3001/habits/entry/${habit._id}`, {
-      method: 'PUT',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+  const queryClient = useQueryClient()
+
+  const mutation = useMutation(
+    () =>
+      updateEntry(habit._id, {
         date,
         status: (status + 1) % 3,
       }),
-    })
-  }
+    {
+      onSuccess: () => {
+        setStatus((status + 1) % 3)
+        queryClient.invalidateQueries(['currentHabit'])
+      },
+    }
+  )
 
   const isToday = () => {
     const today = new Date()
@@ -43,7 +43,9 @@ export const CalendarDay = ({ habit, last, date, currentStatus = 0 }) => {
         <div className='mt-100'></div>
         <div className='position-absolute  top-0 bottom-0 start-0 end-0 '>
           <button
-            onClick={changeStatus}
+            onClick={() => {
+              if (!isInFuture()) mutation.mutate()
+            }}
             className={`btn w-100 h-100  ${
               status == 0
                 ? 'btn-secondary'

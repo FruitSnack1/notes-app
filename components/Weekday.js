@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import React, { useState } from 'react'
+import { updateFrequency } from '../api/habit.api'
 
 export const Weekday = ({ last, day, habit }) => {
   const [enabled, setEnabled] = useState(
@@ -7,22 +9,22 @@ export const Weekday = ({ last, day, habit }) => {
       : false
   )
 
-  const updateEnabled = () => {
-    setEnabled(!enabled)
-    // fetch(`http://localhost:3001/habits/${habit._id}`, {
-    fetch(`http://localhost:3001/habits/frequency/${habit._id}`, {
-      method: 'PUT',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+  const queryClient = useQueryClient()
+
+  const mutation = useMutation(
+    () =>
+      updateFrequency(habit._id, {
         frequency: {
           [day.toLowerCase()]: !enabled,
         },
       }),
-    })
-  }
+    {
+      onSuccess: () => {
+        setEnabled(!enabled)
+        queryClient.invalidateQueries(['currentHabit'])
+      },
+    }
+  )
 
   return (
     <>
@@ -30,7 +32,7 @@ export const Weekday = ({ last, day, habit }) => {
         <div className='mt-100'></div>
         <div className='position-absolute  top-0 bottom-0 start-0 end-0'>
           <button
-            onClick={updateEnabled}
+            onClick={mutation.mutate}
             className={`btn w-100 h-100 fw-bold ${
               enabled ? 'bg-primary' : 'bg-secondary'
             } ${enabled ? 'text-white' : 'text-dark'}`}

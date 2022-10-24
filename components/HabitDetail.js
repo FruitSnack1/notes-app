@@ -8,7 +8,9 @@ import { Score } from './Score'
 import { Week } from './Week'
 
 export const HabitDetail = ({ id }) => {
-  const { isLoading, error, data } = useQuery(['habit'], () => getHabit(id))
+  const { isLoading, error, data } = useQuery(['currentHabit'], () =>
+    getHabit(id)
+  )
 
   if (isLoading) return <p>Loading</p>
   if (error) return <p>{error.message}</p>

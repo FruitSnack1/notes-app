@@ -74,7 +74,6 @@ export const Calendar = ({ habit }) => {
         <div className='calendar-gap'></div>
         <span className='flex-fill text-center'>Su</span>
       </div>
-      <div>{offset}</div>
       <div>
         {new Array(6 * 7)
           .fill(0)
