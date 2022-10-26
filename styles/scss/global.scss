@@ -1,0 +1,60 @@
+$theme-colors: (
+  'primary': #4079fe,
+  'secondary': #f6f8fa,
+  'success': #1ce1ac,
+  'info': #ff7d50,
+  'warning': #ffbe0b,
+  'danger': #ff007f,
+  'light': #ffffff,
+  'dark': #001738,
+);
+body {
+  font-family: 'Nunito', sans-serif !important;
+}
+.v100 {
+  height: calc(100vh - 70px - 66px);
+}
+
+.filler {
+  height: 70%;
+  border-radius: 0 0 var(--bs-border-radius-xl) var(--bs-border-radius-xl) !important;
+}
+
+.hero{
+  background-image: url('../../public/hero-background.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+  min-height: calc(100vh - 70px - 66px);
+}
+
+.calendar-day{
+  width: 11%;
+  margin-bottom: 3%;
+}
+
+.mt-100{
+  margin-top: 100%
+}
+
+.mr-100{
+  margin-right: 100%;
+}
+
+.score{
+  transition: height .7s ease-in-out;
+}
+
+.calendar-gap{
+  width: 3.833333333333333%
+}
+
+.today{
+  width: 50%;
+  height: 50%;
+  right: 25%;
+  top:25%;
+}
+
+@import '/node_modules/bootstrap/scss/bootstrap.scss';
