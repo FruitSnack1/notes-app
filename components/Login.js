@@ -4,6 +4,7 @@ import { Card } from './Card'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { authenticateUser } from '../auth/auth'
+import { login } from '../api/user.api'
 
 export const Login = () => {
   const [username, setUsername] = useState('')
@@ -11,10 +12,7 @@ export const Login = () => {
   const router = useRouter()
 
   const submit = async () => {
-    const res = await axios.post('http://localhost:3001/login', {
-      username,
-      password,
-    })
+    const res = await login({ username, password })
     const { token } = res.data
     authenticateUser(token)
     router.push('/app')
