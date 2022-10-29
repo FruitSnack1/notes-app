@@ -2,6 +2,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { Router, useRouter } from 'next/router'
 import React, { useState } from 'react'
+import { register } from '../api/user.api'
 import { Card } from './Card'
 
 export const Register = () => {
@@ -14,11 +15,7 @@ export const Register = () => {
   const submit = async (e) => {
     e.preventDefault()
     if (password != passwordAgain) return
-    await axios.post('http://localhost:3001/register', {
-      username,
-      password,
-      passwordAgain,
-    })
+    await register({ username, password, passwordAgain })
     router.push('/login')
   }
 
