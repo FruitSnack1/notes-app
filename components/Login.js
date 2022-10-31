@@ -13,8 +13,6 @@ export const Login = () => {
 
   const submit = async () => {
     const res = await login({ username, password })
-    const { token } = res.data
-    authenticateUser(token)
     router.push('/app')
   }
 
