@@ -1,17 +1,19 @@
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Cookies from 'js-cookie'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { isAuthenticated, unauthenticateUser } from '../auth/auth'
 import { Footer } from '../components/Footer'
 
-export default function Layout({ children }) {
+export default function Layout({ children, token }) {
   const router = useRouter()
-  const logOut = () => {
-    unauthenticateUser()
-    router.push('/login')
+
+  const signOut = () => {
+    Cookies.remove('token')
+    router.push('/')
   }
-  const logIn = () => {
-    router.push('/login')
-  }
+
   return (
     <>
       <div>
@@ -26,14 +28,29 @@ export default function Layout({ children }) {
 
             <ul className='navbar-nav px-3'>
               <li className='nav-item '>
-                <Link href='/login'>
-                  <button className='btn fw-bold me-3'>Login</button>
-                </Link>
-                <Link href='/register'>
-                  <button className='btn btn-primary text-white fw-bold'>
-                    Sign up
+                {!token ? (
+                  <>
+                    <Link href='/login'>
+                      <button className='btn fw-bold me-3'>Login</button>
+                    </Link>
+                    <Link href='/register'>
+                      <button className='btn btn-primary text-white fw-bold'>
+                        Sign up
+                      </button>
+                    </Link>
+                  </>
+                ) : (
+                  <button
+                    onClick={signOut}
+                    className='btn btn-secondary fw-bold'
+                  >
+                    <FontAwesomeIcon
+                      icon={faRightFromBracket}
+                      className='text-black-50 me-3'
+                    />
+                    Sign out
                   </button>
-                </Link>
+                )}
               </li>
             </ul>
           </div>
@@ -43,4 +60,8 @@ export default function Layout({ children }) {
       <Footer />
     </>
   )
+}
+
+export async function getServerSideProps({ req, res }) {
+  return { props: { token: 'gsgd' } }
 }

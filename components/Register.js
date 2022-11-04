@@ -20,7 +20,7 @@ export const Register = () => {
   }
 
   return (
-    <div className='col-3 '>
+    <div className='col-lg-4 col-md-6 col-sm-10'>
       <Card>
         <h3 className='fw-bold'>Sign up for free</h3>
         <form>

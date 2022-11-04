@@ -14,6 +14,7 @@ export const HabitDetail = ({ id }) => {
 
   if (isLoading) return <p>Loading</p>
   if (error) return <p>{error.message}</p>
+
   return (
     <>
       <div className='d-flex justify-content-between align-items-center '>

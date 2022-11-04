@@ -11,3 +11,5 @@ export const updateFrequency = (id, body) =>
 
 export const updateEntry = (id, body) =>
   apiClient.put(`/habits/entry/${id}`, body)
+
+export const deleteHabit = (id) => apiClient.delete(`/habits/${id}`)

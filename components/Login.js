@@ -19,7 +19,7 @@ export const Login = () => {
   }
 
   return (
-    <div className='col-3'>
+    <div className='col-lg-4 col-md-6 col-sm-10'>
       <Card className='p-3'>
         <h3 className='fw-bold'>Welcome back</h3>
         <form>
