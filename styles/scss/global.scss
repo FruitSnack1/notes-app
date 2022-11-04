@@ -12,8 +12,14 @@ body {
   font-family: 'Nunito', sans-serif !important;
 }
 .v100 {
-  height: calc(100vh - 70px - 66px) !important;
+  min-height: calc(100vh - 70px - 66px) !important;
 }
+
+.backdrop{
+  backdrop-filter: brightness(0.5);
+  z-index: 10000;
+}
+
 
 .filler {
   height: 70%;
