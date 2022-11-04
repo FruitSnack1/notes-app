@@ -6,7 +6,7 @@ import { NewHabit } from '../components/NewHabit'
 export default function App() {
   return (
     <>
-      <div className='row'>
+      <div className='row mb-5  '>
         <div className='col-12'>
           <HabitList />
           <NewHabit />
