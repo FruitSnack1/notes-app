@@ -5,7 +5,7 @@ import { NavItem } from './NavItem'
 
 export const Navbar = () => {
   return (
-    <nav className='col-md-2 d-none d-md-block sidebar  border-end v100 p-4'>
+    <nav className='col-md-2 d-none d-md-block sidebar  border-end v100 pt-4 pe-4'>
       <div className='sidebar-sticky '>
         <ul className='nav flex-column'>
           <li className='nav-item'>
