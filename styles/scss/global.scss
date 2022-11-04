@@ -12,7 +12,7 @@ body {
   font-family: 'Nunito', sans-serif !important;
 }
 .v100 {
-  height: calc(100vh - 70px - 66px);
+  height: calc(100vh - 70px - 66px) !important;
 }
 
 .filler {
@@ -55,6 +55,10 @@ body {
   height: 50%;
   right: 25%;
   top:25%;
+}
+
+.shadow-end{
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important
 }
 
 @import '/node_modules/bootstrap/scss/bootstrap.scss';

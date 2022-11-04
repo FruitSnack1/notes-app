@@ -7,7 +7,7 @@ import { Score } from './Score'
 const Habit = ({ habit }) => {
   return (
     <>
-      <Card className={'rounded-4 mb-3'}>
+      <Card className={'rounded-4 mb-4'}>
         <div className='row'>
           <div className='col-6'>
             <Link href={`/app/${habit._id}`}>

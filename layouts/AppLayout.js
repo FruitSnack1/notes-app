@@ -10,7 +10,7 @@ export const AppLayout = ({ children }) => {
 
           <main
             role='main'
-            className='col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 '
+            className='col-md-9 ml-sm-auto col-lg-10 pt-4 px-4 '
           >
             {children}
           </main>
