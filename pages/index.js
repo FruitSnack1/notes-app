@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout'
 import bg from '../public/hero-background.svg'
 
 export default function Index() {
-  console.log(bg)
   return (
     <div>
       <Head>

@@ -1,20 +1,11 @@
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Cookies from 'js-cookie'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { isAuthenticated, unauthenticateUser } from '../auth/auth'
 import { Footer } from '../components/Footer'
-import cookie from 'cookie'
 import { useSession } from 'next-auth/react'
 
 export default function Layout({ children, token, data }) {
-  const router = useRouter()
-
-  const signOut = () => {
-    Cookies.remove('token')
-    router.push('/')
-  }
+  const session = useSession()
 
   return (
     <>
@@ -29,7 +20,17 @@ export default function Layout({ children, token, data }) {
             </Link>
             <ul className='navbar-nav px-3'>
               <li className='nav-item '>
-                {!token ? (
+                {session.status === 'authenticated' ? (
+                  <Link href={'/app/settings'}>
+                    <button className='btn btn-secondary fw-bold'>
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        className='text-black-50 me-3'
+                      />
+                      {session.data.user.username}
+                    </button>
+                  </Link>
+                ) : (
                   <>
                     <Link href='/login'>
                       <button className='btn fw-bold me-3'>Login</button>
@@ -40,17 +41,6 @@ export default function Layout({ children, token, data }) {
                       </button>
                     </Link>
                   </>
-                ) : (
-                  <button
-                    onClick={signOut}
-                    className='btn btn-secondary fw-bold'
-                  >
-                    <FontAwesomeIcon
-                      icon={faRightFromBracket}
-                      className='text-black-50 me-3'
-                    />
-                    Sign out
-                  </button>
                 )}
               </li>
             </ul>

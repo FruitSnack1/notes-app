@@ -21,8 +21,11 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const res = await signIn('credentials', { ...userInfo, redirect: false })
-    const session = await getSession()
-    Cookies.set('token', session.user.token)
+    if (!res.error) {
+      const session = await getSession()
+      Cookies.set('token', session.user.token)
+      router.push('/app')
+    }
   }
 
   return (

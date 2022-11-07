@@ -65,14 +65,14 @@ export const NewHabit = () => {
         </Card>
       </div>
       <div className='d-grid gap-2'>
-        <btn
+        <button
           onClick={(e) => {
             setVisible(true)
           }}
           className='btn btn-primary btn-block text-white fw-bold p-3 rounded-4 shadow'
         >
           Add new habit
-        </btn>
+        </button>
       </div>
     </>
   )
