@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import React, { useContext, useState } from 'react'
 import { Card } from './Card'
-import axios from 'axios'
 import { useRouter } from 'next/router'
 import { authenticateUser } from '../auth/auth'
 import { login } from '../api/user.api'
+import { getSession, signIn } from 'next-auth/react'
+import Cookies from 'js-cookie'
 
 export const Login = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [userInfo, setUserInfo] = useState({ username: '', password: '' })
   const router = useRouter()
 
   const submit = async () => {
@@ -18,22 +18,30 @@ export const Login = () => {
     router.push('/app')
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const res = await signIn('credentials', { ...userInfo, redirect: false })
+    const session = await getSession()
+    Cookies.set('token', session.user.token)
+  }
+
   return (
     <div className='col-lg-4 col-md-6 col-sm-10'>
       <Card className='p-3'>
         <h3 className='fw-bold'>Welcome back</h3>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className='form-outline mb-4'>
             <label className='form-label fw-semibold' htmlFor='form2Example1'>
               Username
             </label>
             <input
-              type='email'
+              value={userInfo.username}
+              type='text'
               id='form2Example1'
               className='form-control'
               placeholder='Username'
-              onChange={(e) => {
-                setUsername(e.target.value)
+              onChange={({ target }) => {
+                setUserInfo({ ...userInfo, username: target.value })
               }}
             />
           </div>
@@ -43,24 +51,21 @@ export const Login = () => {
               Password
             </label>
             <input
+              value={userInfo.password}
               type='password'
               id='form2Example2'
               className='form-control'
               placeholder='Password'
-              onChange={(e) => {
-                setPassword(e.target.value)
+              onChange={({ target }) => {
+                setUserInfo({ ...userInfo, password: target.value })
               }}
             />
           </div>
 
           <div className='d-grid'>
             <button
-              type='button'
+              type='submit'
               className='btn btn-primary  mb-4 fw-bold text-white'
-              onClick={(e) => {
-                e.preventDefault()
-                submit()
-              }}
             >
               Sign in
             </button>

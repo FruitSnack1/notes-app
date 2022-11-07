@@ -64,7 +64,7 @@ export const NewHabit = () => {
           </form>
         </Card>
       </div>
-      <div class='d-grid gap-2'>
+      <div className='d-grid gap-2'>
         <btn
           onClick={(e) => {
             setVisible(true)

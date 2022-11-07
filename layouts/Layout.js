@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { isAuthenticated, unauthenticateUser } from '../auth/auth'
 import { Footer } from '../components/Footer'
+import cookie from 'cookie'
+import { useSession } from 'next-auth/react'
 
-export default function Layout({ children, token }) {
+export default function Layout({ children, token, data }) {
   const router = useRouter()
 
   const signOut = () => {
@@ -25,7 +27,6 @@ export default function Layout({ children, token }) {
             <Link href={'/'}>
               <h3 className='fw-bold m-0'>Good Habits</h3>
             </Link>
-
             <ul className='navbar-nav px-3'>
               <li className='nav-item '>
                 {!token ? (
@@ -60,8 +61,4 @@ export default function Layout({ children, token }) {
       <Footer />
     </>
   )
-}
-
-export async function getServerSideProps({ req, res }) {
-  return { props: { token: 'gsgd' } }
 }
