@@ -85,4 +85,9 @@ body {
   outline: 0
 }
 
+.habit-link{
+  cursor: pointer;
+  z-index: 10005;
+}
+
 @import '/node_modules/bootstrap/scss/bootstrap.scss';

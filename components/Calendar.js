@@ -75,7 +75,7 @@ export const Calendar = ({ habit }) => {
         <span className='flex-fill text-center'>Su</span>
       </div>
       <div>
-        {new Array(6 * 7)
+        {new Array(41)
           .fill(0)
           .map((e, i) =>
             (i > offset) & (i <= lastDay + offset) ? (
