@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
 import { postHabit } from '../api/habit.api'
 import { Card } from './Card'
+import { Modal } from './Modal'
 
 export const NewHabit = () => {
   const [title, setTitle] = useState('')
@@ -19,11 +20,7 @@ export const NewHabit = () => {
 
   return (
     <>
-      <div
-        className={`position-absolute h-100 w-100 top-0 start-0 backdrop ${
-          visible ? 'visible' : 'invisible'
-        }`}
-      >
+      <Modal visible={visible}>
         <Card className='ms-auto me-auto w-50 mt-5'>
           <form>
             <h3 className='fw-bold'>Create new Habit</h3>
@@ -46,6 +43,7 @@ export const NewHabit = () => {
                   e.preventDefault()
                   setVisible(false)
                   setTitle('')
+                  document.body.style.overflow = 'inherit'
                 }}
               >
                 Cancel
@@ -56,6 +54,7 @@ export const NewHabit = () => {
                 onClick={(e) => {
                   e.preventDefault()
                   mutation.mutate()
+                  document.body.style.overflow = 'inherit'
                 }}
               >
                 Create habit
@@ -63,11 +62,12 @@ export const NewHabit = () => {
             </div>
           </form>
         </Card>
-      </div>
+      </Modal>
       <div className='d-grid gap-2'>
         <button
           onClick={(e) => {
             setVisible(true)
+            document.body.style.overflow = 'hidden'
           }}
           className='btn btn-primary btn-block text-white fw-bold p-3 rounded-4 shadow'
         >

@@ -41,20 +41,31 @@ export const Score = ({ habit }) => {
     return doneCount
   }
 
+  const getScore = () => {
+    return (
+      (getDoneDays() * 100) /
+      (getWantedDays() ? getWantedDays() : 1)
+    ).toFixed(0)
+  }
+
   return (
     <>
-      <div className='d-inline-block position-relative w-25 bg-dark'>
+      <div className='d-inline-block position-relative w-25 bg-secondary rounded-4'>
         <div className='mt-100'></div>
         <div
+          className='position-absolute  bottom-0 start-0 end-0 w-100 score bg-success '
           style={{
             height: `${
               (getDoneDays() * 100) / (getWantedDays() ? getWantedDays() : 1)
             }%`,
+            borderBottomLeftRadius: '1rem',
+            borderBottomRightRadius: '1rem',
+            borderTopLeftRadius: getScore() != 100 ? '0px' : '1rem',
+            borderTopRightRadius: getScore() != 100 ? '0px' : '1rem',
           }}
-          className='position-absolute  bottom-0 start-0 end-0 w-100 score bg-success'
         ></div>
-        <div className='position-absolute  top-0 bottom-0 start-0 end-0  text-white d-flex justify-content-center align-items-center fw-bold'>
-          {(getDoneDays() * 100) / (getWantedDays() ? getWantedDays() : 1)}%
+        <div className='position-absolute  top-0 bottom-0 start-0 end-0  text-dark d-flex justify-content-center align-items-center fw-bold'>
+          {getScore()}%
         </div>
       </div>
     </>
