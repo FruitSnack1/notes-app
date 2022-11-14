@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import { AppLayout } from '../../layouts/AppLayout'
-import Layout from '../../layouts/Layout'
+import RootLayout from '../../layouts/RootLayout'
 
 export default function Settings() {
   const session = useSession()
@@ -40,8 +40,8 @@ export default function Settings() {
 }
 Settings.getLayout = function getLayout(page) {
   return (
-    <Layout>
+    <RootLayout>
       <AppLayout>{page}</AppLayout>
-    </Layout>
+    </RootLayout>
   )
 }

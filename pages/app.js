@@ -1,7 +1,7 @@
-import Layout from '../layouts/Layout'
+import RootLayout from '../layouts/RootLayout'
 import { AppLayout } from '../layouts/AppLayout'
-import HabitList from '../components/HabitList'
-import { NewHabit } from '../components/NewHabit'
+import HabitList from '../components/habit/HabitList'
+import { NewHabit } from '../components/habit/NewHabit'
 import cookie from 'cookie'
 
 export default function App({ cookies }) {
@@ -19,8 +19,8 @@ export default function App({ cookies }) {
 
 App.getLayout = function getLayout(home) {
   return (
-    <Layout>
+    <RootLayout>
       <AppLayout>{home}</AppLayout>
-    </Layout>
+    </RootLayout>
   )
 }

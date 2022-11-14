@@ -1,6 +1,6 @@
 import React from 'react'
-import { Register } from '../components/Register'
-import Layout from '../layouts/Layout'
+import { Register } from '../components/auth/Register'
+import RootLayout from '../layouts/RootLayout'
 
 export default function register() {
   return (
@@ -15,5 +15,5 @@ export default function register() {
 }
 
 register.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>
+  return <RootLayout>{page}</RootLayout>
 }

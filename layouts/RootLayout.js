@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Footer } from '../components/Footer'
 import { useSession } from 'next-auth/react'
 
-export default function Layout({ children, token, data }) {
+export default function RootLayout({ children, token, data }) {
   const session = useSession()
 
   return (

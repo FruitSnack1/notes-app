@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
-import { postHabit } from '../api/habit.api'
-import { Card } from './Card'
-import { Modal } from './Modal'
+import { postHabit } from '../../api/habit.api'
+import { Card } from '../Card'
+import { Modal } from '../Modal'
 
 export const NewHabit = () => {
   const [title, setTitle] = useState('')

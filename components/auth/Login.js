@@ -1,22 +1,13 @@
 import Link from 'next/link'
-import React, { useContext, useState } from 'react'
-import { Card } from './Card'
+import React, { useState } from 'react'
+import { Card } from '../Card'
 import { useRouter } from 'next/router'
-import { authenticateUser } from '../auth/auth'
-import { login } from '../api/user.api'
 import { getSession, signIn } from 'next-auth/react'
 import Cookies from 'js-cookie'
 
 export const Login = () => {
   const [userInfo, setUserInfo] = useState({ username: '', password: '' })
   const router = useRouter()
-
-  const submit = async () => {
-    const res = await login({ username, password })
-    const { token } = res.data
-    authenticateUser(token)
-    router.push('/app')
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()

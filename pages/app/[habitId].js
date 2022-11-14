@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import { HabitDetail } from '../../components/HabitDetail'
+import { HabitDetail } from '../../components//habit/HabitDetail'
 import { AppLayout } from '../../layouts/AppLayout'
-import Layout from '../../layouts/Layout'
+import RootLayout from '../../layouts/RootLayout'
 
 const HabitDetails = () => {
   const router = useRouter()
@@ -11,9 +11,9 @@ const HabitDetails = () => {
 }
 HabitDetails.getLayout = function getLayout(page) {
   return (
-    <Layout>
+    <RootLayout>
       <AppLayout>{page}</AppLayout>
-    </Layout>
+    </RootLayout>
   )
 }
 

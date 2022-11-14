@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import Layout from '../layouts/Layout'
-import bg from '../public/hero-background.svg'
+import RootLayout from '../layouts/RootLayout'
 
 export default function Index() {
   return (
@@ -21,5 +20,5 @@ export default function Index() {
 }
 
 Index.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>
+  return <RootLayout>{page}</RootLayout>
 }

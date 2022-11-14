@@ -1,8 +1,8 @@
 import React from 'react'
-import { Card } from './Card'
+import { Card } from '../Card'
 import Link from 'next/link'
-import { Week } from './Week'
-import { Score } from './Score'
+import { Week } from '../Week'
+import { Score } from '../Score'
 
 const Habit = ({ habit }) => {
   return (

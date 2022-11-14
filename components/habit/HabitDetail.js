@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { deleteHabit, editHabit, getHabit } from '../api/habit.api'
-import { Calendar } from './Calendar'
-import { Card } from './Card'
-import { Modal } from './Modal'
-import { Score } from './Score'
-import { Week } from './Week'
+import { deleteHabit, editHabit, getHabit } from '../../api/habit.api'
+import { Calendar } from '../calendar/Calendar'
+import { Card } from '../Card'
+import { Modal } from '../Modal'
+import { Score } from '../Score'
+import { Week } from '../Week'
 
 export const HabitDetail = ({ id }) => {
   const router = useRouter()

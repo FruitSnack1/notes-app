@@ -1,9 +1,8 @@
-import axios from 'axios'
 import Link from 'next/link'
-import { Router, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { register } from '../api/user.api'
-import { Card } from './Card'
+import { register } from '../../api/user.api'
+import { Card } from '../Card'
 
 export const Register = () => {
   const [username, setUsername] = useState('')

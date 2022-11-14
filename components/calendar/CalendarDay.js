@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
-import { updateEntry } from '../api/habit.api'
+import { updateEntry } from '../../api/habit.api'
 
 export const CalendarDay = ({ habit, last, date, currentStatus = 0 }) => {
   const [status, setStatus] = useState(currentStatus)

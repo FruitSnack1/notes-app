@@ -1,7 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { getHabits } from '../api/habit.api'
+import { getHabits } from '../../api/habit.api'
 import Habit from './Habit'
 
 const HabitList = () => {
