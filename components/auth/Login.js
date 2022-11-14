@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Card } from '../Card'
 import { useRouter } from 'next/router'
 import { getSession, signIn } from 'next-auth/react'

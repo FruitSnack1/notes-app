@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { Login } from '../components/auth/Login'
 import RootLayout from '../layouts/RootLayout'
 

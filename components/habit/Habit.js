@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Week } from '../Week'
 import { Score } from '../Score'
 
-const Habit = ({ habit }) => {
+export const Habit = ({ habit }) => {
   return (
     <>
       <Link href={`/app/${habit._id}`}>
@@ -27,5 +27,3 @@ const Habit = ({ habit }) => {
     </>
   )
 }
-
-export default Habit

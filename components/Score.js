@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 export const Score = ({ habit }) => {
   const days = ['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su']
 

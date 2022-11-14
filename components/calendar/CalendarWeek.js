@@ -1,4 +1,3 @@
-import React from 'react'
 import { CalendarDay } from './CalendarDay'
 import { EmptyCalendarDay } from './EmptyCalendarDay'
 
@@ -7,8 +6,6 @@ export const CalendarWeek = ({ startDay, endDay, month, year }) => {
 
   return (
     <div className='mb-3'>
-      {/* {startDay}
-      {endDay} */}
       {startDay == 1
         ? days.map((e, i) =>
             i < 7 - endDay ? (

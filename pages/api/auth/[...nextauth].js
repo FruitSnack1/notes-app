@@ -39,6 +39,4 @@ export default nextAuth({
       return token
     },
   },
-
-  // secret: process.env.ACCESS_TOKEN_SECRET,
 })

@@ -5,7 +5,6 @@ import RootLayout from '../../layouts/RootLayout'
 
 export default function Settings() {
   const session = useSession()
-  const [username, setUsername] = useState(session?.data?.user?.username)
 
   return (
     <div>
@@ -38,6 +37,7 @@ export default function Settings() {
     </div>
   )
 }
+
 Settings.getLayout = function getLayout(page) {
   return (
     <RootLayout>

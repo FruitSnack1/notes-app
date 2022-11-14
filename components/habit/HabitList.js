@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { getHabits } from '../../api/habit.api'
-import Habit from './Habit'
+import { Habit } from './Habit'
 
-const HabitList = () => {
+export const HabitList = () => {
   const { isLoading, error, data } = useQuery(['habits'], getHabits)
 
   if (isLoading) return <p>Loading</p>
@@ -17,5 +17,3 @@ const HabitList = () => {
     </div>
   )
 }
-
-export default HabitList

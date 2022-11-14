@@ -7,7 +7,6 @@ export const AppLayout = ({ children }) => {
       <div className='container v100'>
         <div className='row '>
           <Navbar />
-
           <main
             role='main'
             className='col-md-9 ml-sm-auto col-lg-10 pt-4 px-4 '

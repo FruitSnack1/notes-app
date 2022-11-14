@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { Weekday } from './Weekday'
 
 export const Week = ({ habit }) => {
