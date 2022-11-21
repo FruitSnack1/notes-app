@@ -6,7 +6,6 @@ import RootLayout from '../../layouts/RootLayout'
 
 export default function Settings() {
   const session = useSession()
-  console.log(session)
 
   const [username, setUsername] = useState('')
 

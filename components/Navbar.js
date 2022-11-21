@@ -1,4 +1,5 @@
 import {
+  faChartColumn,
   faCog,
   faHome,
   faRightFromBracket,
@@ -19,6 +20,9 @@ export const Navbar = () => {
           </li>
           <li className='nav-item'>
             <NavItem href={'/app/settings'} name={'Settings'} icon={faCog} />
+          </li>
+          <li className='nav-item'>
+            <NavItem href={'/app/graph'} name={'Graph'} icon={faChartColumn} />
           </li>
           <li className='nav-item'>
             <NavItem href={'/app/trash'} name={'Trash'} icon={faTrash} />
