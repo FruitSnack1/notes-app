@@ -90,4 +90,17 @@ body {
   z-index: 9999;
 }
 
+.graph-cell{
+  width: 28px;
+  height: 28px;
+  padding:2px
+}
+
+.graph-habit-title{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
 @import '/node_modules/bootstrap/scss/bootstrap.scss';
